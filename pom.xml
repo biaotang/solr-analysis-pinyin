@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.macrowing</groupId>
+    <artifactId>solr-analysis-pinyin</artifactId>
+    <version>${solr.version}</version>
+    <packaging>jar</packaging>
+    <name>solr-analysis-pinyin</name>
+    <description>Pinyin Analysis for Solr</description>
+    <inceptionYear>2019</inceptionYear>
+    
+    <developers>
+        <developer>
+            <name>biao.tang</name>
+            <email>biaotangwork@gmail.com</email>
+            <organization>macrowing</organization>
+            <organizationUrl>http://www.macrowing.com/</organizationUrl>
+        </developer>
+    </developers>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <solr.version>6.6.2</solr.version>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <dependency.junit.version>4.12</dependency.junit.version>
+        <dependency.nlp-lang.version>1.7.6</dependency.nlp-lang.version>
+    </properties>
+    
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.nlpcn/nlp-lang -->
+		<dependency>
+		    <groupId>org.nlpcn</groupId>
+		    <artifactId>nlp-lang</artifactId>
+		    <version>${dependency.nlp-lang.version}</version>
+		</dependency>
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${dependency.junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>${solr.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
+            <version>${solr.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+    </dependencies>
+        
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.2</version>
+                <configuration>
+                    <source>${maven.compiler.target}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <!--配置生成源码包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <defaultGoal>compile</defaultGoal>
+    </build>
+    
+</project>
