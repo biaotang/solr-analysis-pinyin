@@ -186,12 +186,9 @@ public class PinyinTokenFilter extends TokenFilter {
             if (config.lowercase) {
                 fl = fl.toLowerCase();
             }
-//            if (!(config.keepSeparateFirstLetter && fl.length() <= 1)) {
-//                addCandidate(new TermItem(fl, 0, fl.length(), 1));
-//            }
-            if (fl.length() > 1) {
-				addCandidate(new TermItem(fl, 0, fl.length(), 1));
-			}
+            if (!(config.keepSeparateFirstLetter && fl.length() <= 1)) {
+                addCandidate(new TermItem(fl, 0, fl.length(), 1));
+            }
         }
 
         if (!processedSortCandidate) {
@@ -226,14 +223,6 @@ public class PinyinTokenFilter extends TokenFilter {
         if (term.length() == 0) {
             return;
         }
-        
-        // remove one char term
-        if (term.length() == 1) {
-        	char c = term.charAt(0);
-			if ((c > 96 && c < 123) || (c > 64 && c < 91) || (c > 47 && c < 58)) {
-				return;
-			}
-		}
         
         //remove same term with same position
         String fr=term+item.position;

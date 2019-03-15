@@ -249,12 +249,9 @@ public class PinyinTokenizer extends Tokenizer {
                 if (config.lowercase) {
                     fl = fl.toLowerCase();
                 }
-//                if (!(config.keepSeparateFirstLetter && fl.length() <= 1)) {
-//                    addCandidate(new TermItem(fl, 0, fl.length(), 1));
-//                }
-                if (fl.length() > 1) {
-					addCandidate(new TermItem(fl, 0, fl.length(), 1));
-				}
+                if (!(config.keepSeparateFirstLetter && fl.length() <= 1)) {
+                    addCandidate(new TermItem(fl, 0, fl.length(), 1));
+                }
             }
 
             if (!processedSortCandidate) {
