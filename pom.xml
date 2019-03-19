@@ -20,7 +20,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <solr.version>6.6.2</solr.version>
+        <solr.version>7.7.1</solr.version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <dependency.junit.version>4.12</dependency.junit.version>
         <dependency.nlp-lang.version>1.7.6</dependency.nlp-lang.version>
